@@ -89,6 +89,269 @@
             user-select: none;
         }
         
+        /* Oscar Pet Widget */
+        .oscar-widget {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            z-index: 1001;
+            cursor: pointer;
+            user-select: none;
+            transition: var(--liquid-transition);
+        }
+        
+        .oscar-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: var(--liquid-gradient);
+            backdrop-filter: blur(25px) saturate(200%);
+            -webkit-backdrop-filter: blur(25px) saturate(200%);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 1rem;
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+            transition: var(--liquid-transition);
+            overflow: hidden;
+        }
+        
+        .oscar-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+            animation: shimmer 4s ease-in-out infinite;
+        }
+        
+        .oscar-container:hover {
+            transform: translateY(-2px) scale(1.02);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 100%);
+            backdrop-filter: blur(30px) saturate(220%);
+            -webkit-backdrop-filter: blur(30px) saturate(220%);
+            box-shadow: 
+                0 16px 48px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.3);
+        }
+        
+        .oscar-dog {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 0.5rem;
+            transition: var(--liquid-transition);
+            animation: oscarFloat 3s ease-in-out infinite;
+        }
+        
+        .oscar-dog:hover {
+            animation: oscarWag 0.5s ease-in-out infinite;
+        }
+        
+        .oscar-info {
+            text-align: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        .oscar-name {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.2rem;
+            letter-spacing: -0.01em;
+        }
+        
+        .oscar-counter {
+            font-size: 0.8rem;
+            color: var(--secondary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            justify-content: center;
+        }
+        
+        .pet-count {
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        .heart-icon {
+            color: #ff4757;
+            animation: heartPulse 2s ease-in-out infinite;
+        }
+        
+        /* Oscar Animations */
+        @keyframes oscarFloat {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg); 
+            }
+            50% { 
+                transform: translateY(-5px) rotate(1deg); 
+            }
+        }
+        
+        @keyframes oscarWag {
+            0%, 100% { 
+                transform: translateX(0) rotate(0deg); 
+            }
+            25% { 
+                transform: translateX(-2px) rotate(-2deg); 
+            }
+            75% { 
+                transform: translateX(2px) rotate(2deg); 
+            }
+        }
+        
+        @keyframes heartPulse {
+            0%, 100% { 
+                opacity: 0.7; 
+                transform: scale(1); 
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.1); 
+            }
+        }
+        
+        /* Pet Effect Particles */
+        .pet-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+        
+        .pet-particle {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(135deg, #ff6b6b, #ff8787);
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleFloat 1.5s ease-out forwards;
+        }
+        
+        .pet-particle::before {
+            content: '❤️';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            font-size: 16px;
+            animation: particleRotate 1.5s ease-out forwards;
+        }
+        
+        @keyframes particleFloat {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(0.8);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-50px) scale(1.2);
+            }
+        }
+        
+        @keyframes particleRotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        /* Pet Success Animation */
+        .oscar-container.petted {
+            animation: petSuccess 0.6s ease-out;
+        }
+        
+        @keyframes petSuccess {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .oscar-widget {
+                top: 1rem;
+                left: 1rem;
+            }
+            
+            .oscar-container {
+                padding: 0.8rem;
+                border-radius: 16px;
+            }
+            
+            .oscar-dog {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .oscar-name {
+                font-size: 0.8rem;
+            }
+            
+            .oscar-counter {
+                font-size: 0.7rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .oscar-widget {
+                top: 0.7rem;
+                left: 0.7rem;
+            }
+            
+            .oscar-container {
+                padding: 0.6rem;
+                border-radius: 14px;
+            }
+            
+            .oscar-dog {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .oscar-name {
+                font-size: 0.75rem;
+            }
+            
+            .oscar-counter {
+                font-size: 0.65rem;
+            }
+        }
+        
+        /* Dark Mode Support */
+        [data-theme="dark"] .oscar-container {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 
+                0 12px 40px rgba(255, 255, 255, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+        }
+        
+        [data-theme="dark"] .oscar-container:hover {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.8) 100%);
+            backdrop-filter: blur(30px) saturate(220%);
+            -webkit-backdrop-filter: blur(30px) saturate(220%);
+            box-shadow: 
+                0 16px 48px rgba(255, 255, 255, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+        }
+        
         .bulb-container {
             position: relative;
             display: flex;
@@ -2455,17 +2718,16 @@
         /* Mobile Status Badge - Top Left Corner */
         .mobile-status-badge {
             display: none;
-            position: fixed;
-            top: 1rem;
-            left: 1rem;
-            z-index: 1001;
-            padding: 0.5rem 0.8rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding: 0.6rem 1rem;
             background: linear-gradient(135deg, rgba(34, 197, 94, 0.9) 0%, rgba(21, 128, 61, 0.8) 100%);
             backdrop-filter: blur(15px) saturate(150%);
             -webkit-backdrop-filter: blur(15px) saturate(150%);
             border: 1px solid rgba(34, 197, 94, 0.3);
-            border-radius: 1.5rem;
-            font-size: 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
             font-weight: 600;
             font-family: 'Plus Jakarta Sans', sans-serif;
             color: var(--white);
@@ -2473,23 +2735,24 @@
                 0 4px 16px rgba(34, 197, 94, 0.25),
                 inset 0 1px 0 rgba(255, 255, 255, 0.4);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            width: fit-content;
+            align-self: center;
         }
         
         .mobile-status-badge .status-dot {
-            width: 6px;
-            height: 6px;
+            width: 7px;
+            height: 7px;
             background: var(--white);
             border-radius: 50%;
             animation: statusPulse 2s infinite;
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
-            margin-right: 0.4rem;
+            margin-right: 0.5rem;
         }
         
         @media (max-width: 768px) {
-            /* Show mobile status badge */
+            /* Show mobile status badge in hero */
             .mobile-status-badge {
                 display: flex;
-                align-items: center;
             }
             
             /* Hide status badge from bottom nav */
@@ -2500,31 +2763,31 @@
         
         @media (max-width: 480px) {
             .mobile-status-badge {
-                top: 0.75rem;
-                left: 0.75rem;
-                padding: 0.4rem 0.7rem;
-                font-size: 0.7rem;
+                margin-top: 1.2rem;
+                padding: 0.5rem 0.8rem;
+                font-size: 0.75rem;
+                border-radius: 1.8rem;
             }
             
             .mobile-status-badge .status-dot {
-                width: 5px;
-                height: 5px;
-                margin-right: 0.3rem;
+                width: 6px;
+                height: 6px;
+                margin-right: 0.4rem;
             }
         }
         
         @media (max-width: 390px) {
             .mobile-status-badge {
-                top: 0.5rem;
-                left: 0.5rem;
-                padding: 0.35rem 0.6rem;
-                font-size: 0.65rem;
+                margin-top: 1rem;
+                padding: 0.45rem 0.7rem;
+                font-size: 0.7rem;
+                border-radius: 1.6rem;
             }
             
             .mobile-status-badge .status-dot {
-                width: 4px;
-                height: 4px;
-                margin-right: 0.25rem;
+                width: 5px;
+                height: 5px;
+                margin-right: 0.35rem;
             }
         }
         
@@ -2728,11 +2991,82 @@
         </div>
     </div>
     
+    <!-- Oscar Pet Widget -->
+    <div class="oscar-widget" id="oscarWidget">
+        <div class="oscar-container" id="oscarContainer">
+            <div class="pet-particles" id="petParticles"></div>
+            <div class="oscar-dog" id="oscarDog">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- White Spitz Dog SVG -->
+                    <defs>
+                        <linearGradient id="furGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#f8f9fa;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#e9ecef;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="noseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#343a40;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#495057;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    
+                    <!-- Body -->
+                    <ellipse cx="50" cy="65" rx="25" ry="18" fill="url(#furGradient)" stroke="#dee2e6" stroke-width="0.5"/>
+                    
+                    <!-- Head -->
+                    <circle cx="50" cy="35" r="20" fill="url(#furGradient)" stroke="#dee2e6" stroke-width="0.5"/>
+                    
+                    <!-- Ears -->
+                    <ellipse cx="40" cy="20" rx="6" ry="10" fill="url(#furGradient)" stroke="#dee2e6" stroke-width="0.5" transform="rotate(-25 40 20)"/>
+                    <ellipse cx="60" cy="20" rx="6" ry="10" fill="url(#furGradient)" stroke="#dee2e6" stroke-width="0.5" transform="rotate(25 60 20)"/>
+                    
+                    <!-- Inner ears -->
+                    <ellipse cx="40" cy="22" rx="3" ry="6" fill="#ffc2cd" transform="rotate(-25 40 22)"/>
+                    <ellipse cx="60" cy="22" rx="3" ry="6" fill="#ffc2cd" transform="rotate(25 60 22)"/>
+                    
+                    <!-- Eyes -->
+                    <circle cx="45" cy="30" r="3" fill="#343a40"/>
+                    <circle cx="55" cy="30" r="3" fill="#343a40"/>
+                    <circle cx="46" cy="29" r="1" fill="#ffffff"/>
+                    <circle cx="56" cy="29" r="1" fill="#ffffff"/>
+                    
+                    <!-- Nose -->
+                    <ellipse cx="50" cy="38" rx="2" ry="1.5" fill="url(#noseGradient)"/>
+                    
+                    <!-- Mouth -->
+                    <path d="M 48 42 Q 50 44 52 42" stroke="#343a40" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                    
+                    <!-- Tail -->
+                    <path d="M 25 60 Q 15 50 20 35" stroke="#dee2e6" stroke-width="8" fill="none" stroke-linecap="round"/>
+                    <path d="M 25 60 Q 15 50 20 35" stroke="url(#furGradient)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                    
+                    <!-- Legs -->
+                    <ellipse cx="40" cy="80" rx="3" ry="8" fill="url(#furGradient)" stroke="#dee2e6" stroke-width="0.5"/>
+                    <ellipse cx="50" cy="82" rx="3" ry="8" fill="url(#furGradient)" stroke="#dee2e6" stroke-width="0.5"/>
+                    <ellipse cx="60" cy="80" rx="3" ry="8" fill="url(#furGradient)" stroke="#dee2e6" stroke-width="0.5"/>
+                    
+                    <!-- Paws -->
+                    <ellipse cx="40" cy="88" rx="4" ry="2" fill="#6c757d"/>
+                    <ellipse cx="50" cy="90" rx="4" ry="2" fill="#6c757d"/>
+                    <ellipse cx="60" cy="88" rx="4" ry="2" fill="#6c757d"/>
+                </svg>
+            </div>
+            <div class="oscar-info">
+                <div class="oscar-name">Meet Oscar!</div>
+                <div class="oscar-counter">
+                    <span class="heart-icon">❤️</span>
+                    <span class="pet-count" id="petCount">0</span>
+                    <span>pets</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- Mobile Status Badge - Top Left -->
-    <div class="mobile-status-badge">
+    <!-- <div class="mobile-status-badge">
         <span class="status-dot"></span>
         <span>available for work</span>
-    </div>
+    </div> -->
     
     <!-- Scroll Blur Effects -->
     <div class="scroll-blur-top"></div>
@@ -2843,6 +3177,11 @@
                         <path d="M5 12h14m-7-7l7 7-7 7"/>
                     </svg>
                 </a>
+                <!-- Mobile Status Badge -->
+                <div class="mobile-status-badge">
+                    <span class="status-dot"></span>
+                    <span>available for work</span>
+                </div>
             </div>
         </div>
     </section>
@@ -4171,6 +4510,462 @@
         }
         
         // Custom Cursor for Projects Section
+        
+        // Oscar Pet Widget Functionality
+        function initOscarWidget() {
+            const oscarWidget = document.getElementById('oscarWidget');
+            const oscarContainer = document.getElementById('oscarContainer');
+            const oscarDog = document.getElementById('oscarDog');
+            const petCountElement = document.getElementById('petCount');
+            const petParticles = document.getElementById('petParticles');
+            
+            if (!oscarWidget || !oscarContainer || !oscarDog || !petCountElement || !petParticles) return;
+            
+            let petCount = 0;
+            const API_BASE = 'http://localhost:3000'; // Fixed to point to the server
+            
+            // Spam detection variables
+            let isSpamming = false;
+            let spamTimer = null;
+            let lastPetTime = 0;
+            const SPAM_THRESHOLD = 1000; // 1 second between pets to not be considered spam
+            const SPAM_COOLDOWN = 2000; // 2 seconds of no petting to end spam session
+            
+            // Initialize pet count from server
+            async function loadPetCount() {
+                console.log('🔄 Loading pet count from server...');
+                console.log('📡 API_BASE:', API_BASE);
+                
+                try {
+                    const response = await fetch(`${API_BASE}/api/stats`);
+                    console.log('📥 Server response status:', response.status);
+                    
+                    if (response.ok) {
+                        const data = await response.json();
+                        console.log('✅ Server data received:', data);
+                        petCount = data.count || 0;
+                        petCountElement.textContent = petCount;
+                        console.log('🎯 Pet count updated to:', petCount);
+                        
+                        // Clear any old localStorage data since we got server data
+                        localStorage.removeItem('oscarPetCount');
+                        
+                        if (typeof updateAriaLabel === 'function') {
+                            updateAriaLabel();
+                        }
+                    } else {
+                        console.warn('⚠️ Server responded with error status:', response.status);
+                        // Fallback to localStorage if server is down
+                        petCount = parseInt(localStorage.getItem('oscarPetCount') || '0');
+                        petCountElement.textContent = petCount;
+                        console.warn('💾 Using local storage count:', petCount);
+                    }
+                } catch (error) {
+                    console.error('❌ Failed to connect to server:', error);
+                    // Fallback to localStorage if server is unreachable
+                    petCount = parseInt(localStorage.getItem('oscarPetCount') || '0');
+                    petCountElement.textContent = petCount;
+                    console.warn('💾 Using local storage count:', petCount);
+                }
+            }
+            
+            // Save pet count to server
+            async function incrementPetCount() {
+                console.log('🚀 Incrementing pet count on server...');
+                
+                try {
+                    const response = await fetch(`${API_BASE}/api/increment`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        }
+                    });
+                    
+                    console.log('📥 Increment response status:', response.status);
+                    
+                    if (response.ok) {
+                        const data = await response.json();
+                        console.log('✅ Server increment data:', data);
+                        petCount = data.count;
+                        petCountElement.textContent = petCount;
+                        console.log('🎯 Pet count updated to:', petCount);
+                        
+                        // Clear localStorage since we're using server data
+                        localStorage.removeItem('oscarPetCount');
+                        
+                        // Show server success message occasionally
+                        if (petCount % 10 === 0) {
+                            setTimeout(() => {
+                                createPetFeedback('Global pets: ' + petCount + '! 🌍');
+                            }, 500);
+                        }
+                        
+                        return true;
+                    } else {
+                        throw new Error('Server response not ok');
+                    }
+                } catch (error) {
+                    console.error('❌ Server increment failed:', error);
+                    // Fallback to localStorage if server fails
+                    petCount++;
+                    petCountElement.textContent = petCount;
+                    localStorage.setItem('oscarPetCount', petCount.toString());
+                    console.warn('💾 Saved locally, count now:', petCount);
+                    
+                    // Show offline message
+                    setTimeout(() => {
+                        createPetFeedback('Saved locally! 💾');
+                    }, 500);
+                    
+                    return false;
+                }
+            }
+            
+            // Create heart particle effect
+            function createHeartParticle() {
+                const particle = document.createElement('div');
+                particle.className = 'pet-particle';
+                
+                // Random position within the container
+                const rect = oscarContainer.getBoundingClientRect();
+                const x = Math.random() * rect.width;
+                const y = Math.random() * rect.height;
+                
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                
+                petParticles.appendChild(particle);
+                
+                // Remove particle after animation
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                }, 1500);
+            }
+            
+            // Pet Oscar function
+            async function petOscar(e) {
+                e.preventDefault();
+                
+                // Disable button temporarily to prevent rapid spam
+                oscarWidget.style.pointerEvents = 'none';
+                
+                const currentTime = Date.now();
+                const timeSinceLastPet = currentTime - lastPetTime;
+                
+                // Check if this is user's first pet locally (before incrementing)
+                const localPetCount = parseInt(localStorage.getItem('oscarPetCount') || '0');
+                const isFirstPetLocally = localPetCount === 0;
+                
+                // Detect spam behavior
+                if (timeSinceLastPet < SPAM_THRESHOLD) {
+                    isSpamming = true;
+                }
+                
+                lastPetTime = currentTime;
+                
+                // Clear any existing spam timer
+                if (spamTimer) {
+                    clearTimeout(spamTimer);
+                }
+                
+                // Increment counter (either on server or locally)
+                const success = await incrementPetCount();
+                updateAriaLabel();
+                
+                // Add petted animation to container
+                oscarContainer.classList.add('petted');
+                setTimeout(() => {
+                    oscarContainer.classList.remove('petted');
+                }, 600);
+                
+                // Create multiple heart particles
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        createHeartParticle();
+                    }, i * 100);
+                }
+                
+                // Add temporary wagging animation to dog
+                oscarDog.style.animation = 'oscarWag 0.5s ease-in-out 3';
+                setTimeout(() => {
+                    oscarDog.style.animation = 'oscarFloat 3s ease-in-out infinite';
+                }, 1500);
+                
+                // Show message on user's first pet locally
+                if (isFirstPetLocally) {
+                    setTimeout(() => {
+                        createPetFeedback(getRandomPetMessage('first'));
+                    }, 800);
+                }
+                
+                // Check for milestones (but don't show message if spamming)
+                if (!isSpamming) {
+                    checkMilestone();
+                }
+                
+                // Set timer to detect when spam session ends
+                spamTimer = setTimeout(() => {
+                    if (isSpamming) {
+                        // Spam session ended, show a random message
+                        isSpamming = false;
+                        createPetFeedback(getRandomPetMessage('spam_end'));
+                    }
+                }, SPAM_COOLDOWN);
+                
+                // Re-enable button
+                setTimeout(() => {
+                    oscarWidget.style.pointerEvents = 'auto';
+                }, 500); // Reduced from 1000ms to 500ms for better UX
+            }
+            
+            // Create pet feedback effect
+            function createPetFeedback(customMessage = null) {
+                const feedback = document.createElement('div');
+                feedback.textContent = customMessage || getRandomPetMessage();
+                feedback.style.cssText = `
+                    position: absolute;
+                    top: -30px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: linear-gradient(135deg, #ff6b6b, #ff8787);
+                    color: white;
+                    padding: 0.3rem 0.6rem;
+                    border-radius: 15px;
+                    font-size: 0.7rem;
+                    font-weight: 600;
+                    font-family: 'Plus Jakarta Sans', sans-serif;
+                    white-space: nowrap;
+                    z-index: 1002;
+                    opacity: 0;
+                    pointer-events: none;
+                    animation: petFeedbackFloat 2s ease-out forwards;
+                    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+                `;
+                
+                oscarContainer.appendChild(feedback);
+                
+                setTimeout(() => {
+                    if (feedback.parentNode) {
+                        feedback.parentNode.removeChild(feedback);
+                    }
+                }, 2000);
+            }
+            
+            // Random pet messages
+            function getRandomPetMessage(messageType = 'normal') {
+                let messages;
+                
+                if (messageType === 'first') {
+                    messages = [
+                        'Hello there! 🐕',
+                        'Oscar says hi! 👋',
+                        'First pet! Welcome! ✨',
+                        'Nice to meet you! 🐾',
+                        'Oscar is excited! 🎉'
+                    ];
+                } else if (messageType === 'spam_end') {
+                    messages = [
+                        'Whew! That was fun! 😄',
+                        'Oscar is dizzy! 🌀',
+                        'Thanks for the pets! 💕',
+                        'Oscar needs a break! 😴',
+                        'So many pets! Wow! 🤩',
+                        'Oscar is overwhelmed! 🥰',
+                        'Pet session complete! ✅'
+                    ];
+                } else {
+                    // Normal messages
+                    messages = [
+                        'Oscar loves you! 🐾',
+                        'Woof woof! ❤️',
+                        'Good human! 🦴',
+                        'More pets please! 🐕',
+                        'Oscar is happy! ✨',
+                        'Best human ever! 🏆',
+                        'Tail wagging! 🎾',
+                        'Oscar says thanks! 💕'
+                    ];
+                }
+                
+                return messages[Math.floor(Math.random() * messages.length)];
+            }
+            
+            // Add pet feedback animation styles
+            const petFeedbackStyle = document.createElement('style');
+            petFeedbackStyle.textContent = `
+                @keyframes petFeedbackFloat {
+                    0% {
+                        opacity: 0;
+                        transform: translateX(-50%) translateY(10px) scale(0.8);
+                    }
+                    20% {
+                        opacity: 1;
+                        transform: translateX(-50%) translateY(-10px) scale(1);
+                    }
+                    80% {
+                        opacity: 1;
+                        transform: translateX(-50%) translateY(-20px) scale(1);
+                    }
+                    100% {
+                        opacity: 0;
+                        transform: translateX(-50%) translateY(-30px) scale(0.9);
+                    }
+                }
+            `;
+            document.head.appendChild(petFeedbackStyle);
+            
+            // Add event listeners
+            oscarWidget.addEventListener('click', petOscar);
+            oscarWidget.addEventListener('touchstart', petOscar, { passive: false });
+            
+            // Add keyboard accessibility
+            oscarWidget.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    petOscar(e);
+                }
+            });
+            
+            // Make widget focusable for accessibility
+            oscarWidget.setAttribute('tabindex', '0');
+            oscarWidget.setAttribute('role', 'button');
+            oscarWidget.setAttribute('aria-label', `Pet Oscar the dog. Currently petted ${petCount} times.`);
+            
+            // Update aria-label when count changes
+            function updateAriaLabel() {
+                oscarWidget.setAttribute('aria-label', `Pet Oscar the dog. Currently petted ${petCount} times.`);
+            }
+            
+            // Update aria-label initially and after each pet
+            updateAriaLabel();
+            
+            // Update aria-label after each pet
+            const originalPetOscar = petOscar;
+            petOscar = function(e) {
+                originalPetOscar.call(this, e);
+                updateAriaLabel();
+            };
+            
+            // Add hover effects for better user interaction
+            oscarWidget.addEventListener('mouseenter', () => {
+                if (window.innerWidth > 768) { // Only on desktop
+                    oscarContainer.style.transform = 'translateY(-2px) scale(1.02)';
+                }
+            });
+            
+            oscarWidget.addEventListener('mouseleave', () => {
+                if (window.innerWidth > 768) { // Only on desktop
+                    oscarContainer.style.transform = '';
+                }
+            });
+            
+            // Show milestone messages for special pet counts
+            function checkMilestone() {
+                const milestones = {
+                    // Skip 1 since we handle first pet separately
+                    10: "10 global pets milestone! 🏅", 
+                    25: "25 global pets! Oscar is loved worldwide! 💖",
+                    50: "Half century of global pets! 🎊",
+                    100: "100 global pets! Oscar is famous! ⭐",
+                    250: "250 global pets! Legendary status! 👑",
+                    500: "500 global pets! Oscar is a superstar! 🌟",
+                    1000: "1000 global pets! Internet famous dog! 🚀",
+                    2500: "2500 global pets! World domination! 🌍",
+                    5000: "5000 global pets! Cosmic celebrity! 🛸"
+                };
+                
+                if (milestones[petCount]) {
+                    setTimeout(() => {
+                        createMilestoneFeedback(milestones[petCount]);
+                    }, 500);
+                }
+            }
+            
+            // Create milestone feedback
+            function createMilestoneFeedback(message) {
+                const milestone = document.createElement('div');
+                milestone.textContent = message;
+                milestone.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: linear-gradient(135deg, #667eea, #764ba2);
+                    color: white;
+                    padding: 1rem 1.5rem;
+                    border-radius: 20px;
+                    font-size: 1.1rem;
+                    font-weight: 700;
+                    font-family: 'Plus Jakarta Sans', sans-serif;
+                    text-align: center;
+                    z-index: 1003;
+                    opacity: 0;
+                    pointer-events: none;
+                    animation: milestonePopup 3s ease-out forwards;
+                    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+                    backdrop-filter: blur(10px);
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                `;
+                
+                document.body.appendChild(milestone);
+                
+                setTimeout(() => {
+                    if (milestone.parentNode) {
+                        milestone.parentNode.removeChild(milestone);
+                    }
+                }, 3000);
+            }
+            
+            // Add milestone animation styles
+            const milestoneStyle = document.createElement('style');
+            milestoneStyle.textContent = `
+                @keyframes milestonePopup {
+                    0% {
+                        opacity: 0;
+                        transform: translate(-50%, -50%) scale(0.5);
+                    }
+                    20% {
+                        opacity: 1;
+                        transform: translate(-50%, -50%) scale(1.1);
+                    }
+                    30% {
+                        transform: translate(-50%, -50%) scale(1);
+                    }
+                    80% {
+                        opacity: 1;
+                        transform: translate(-50%, -50%) scale(1);
+                    }
+                    100% {
+                        opacity: 0;
+                        transform: translate(-50%, -50%) scale(0.9);
+                    }
+                }
+            `;
+            document.head.appendChild(milestoneStyle);
+            
+            // Override petOscar to include milestone check
+            const originalPetFunction = petOscar;
+            petOscar = function(e) {
+                originalPetFunction.call(this, e);
+                checkMilestone();
+            };
+            
+            // Re-bind the event listeners with the updated function
+            oscarWidget.removeEventListener('click', originalPetFunction);
+            oscarWidget.removeEventListener('touchstart', originalPetFunction);
+            oscarWidget.addEventListener('click', petOscar);
+            oscarWidget.addEventListener('touchstart', petOscar, { passive: false });
+            
+            // Load initial pet count from server
+            loadPetCount();
+        }
+        
+        // Initialize Oscar widget on page load
+        window.addEventListener('load', () => {
+            initOscarWidget();
+        });
     </script>
 </body>
 </html>
