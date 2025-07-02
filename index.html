@@ -3005,60 +3005,7 @@
         <div class="oscar-container" id="oscarContainer">
             <div class="pet-particles" id="petParticles"></div>
             <div class="oscar-dog" id="oscarDog">
-                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <!-- White Spitz Dog SVG -->
-                    <defs>
-                        <linearGradient id="furGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
-                            <stop offset="50%" style="stop-color:#f8f9fa;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#e9ecef;stop-opacity:1" />
-                        </linearGradient>
-                        <linearGradient id="noseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#343a40;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#495057;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    
-                    <!-- Body -->
-                    <ellipse cx="50" cy="65" rx="25" ry="18" fill="url(#furGradient)" stroke="#dee2e6" stroke-width="0.5"/>
-                    
-                    <!-- Head -->
-                    <circle cx="50" cy="35" r="20" fill="url(#furGradient)" stroke="#dee2e6" stroke-width="0.5"/>
-                    
-                    <!-- Ears -->
-                    <ellipse cx="40" cy="20" rx="6" ry="10" fill="url(#furGradient)" stroke="#dee2e6" stroke-width="0.5" transform="rotate(-25 40 20)"/>
-                    <ellipse cx="60" cy="20" rx="6" ry="10" fill="url(#furGradient)" stroke="#dee2e6" stroke-width="0.5" transform="rotate(25 60 20)"/>
-                    
-                    <!-- Inner ears -->
-                    <ellipse cx="40" cy="22" rx="3" ry="6" fill="#ffc2cd" transform="rotate(-25 40 22)"/>
-                    <ellipse cx="60" cy="22" rx="3" ry="6" fill="#ffc2cd" transform="rotate(25 60 22)"/>
-                    
-                    <!-- Eyes -->
-                    <circle cx="45" cy="30" r="3" fill="#343a40"/>
-                    <circle cx="55" cy="30" r="3" fill="#343a40"/>
-                    <circle cx="46" cy="29" r="1" fill="#ffffff"/>
-                    <circle cx="56" cy="29" r="1" fill="#ffffff"/>
-                    
-                    <!-- Nose -->
-                    <ellipse cx="50" cy="38" rx="2" ry="1.5" fill="url(#noseGradient)"/>
-                    
-                    <!-- Mouth -->
-                    <path d="M 48 42 Q 50 44 52 42" stroke="#343a40" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                    
-                    <!-- Tail -->
-                    <path d="M 25 60 Q 15 50 20 35" stroke="#dee2e6" stroke-width="8" fill="none" stroke-linecap="round"/>
-                    <path d="M 25 60 Q 15 50 20 35" stroke="url(#furGradient)" stroke-width="6" fill="none" stroke-linecap="round"/>
-                    
-                    <!-- Legs -->
-                    <ellipse cx="40" cy="80" rx="3" ry="8" fill="url(#furGradient)" stroke="#dee2e6" stroke-width="0.5"/>
-                    <ellipse cx="50" cy="82" rx="3" ry="8" fill="url(#furGradient)" stroke="#dee2e6" stroke-width="0.5"/>
-                    <ellipse cx="60" cy="80" rx="3" ry="8" fill="url(#furGradient)" stroke="#dee2e6" stroke-width="0.5"/>
-                    
-                    <!-- Paws -->
-                    <ellipse cx="40" cy="88" rx="4" ry="2" fill="#6c757d"/>
-                    <ellipse cx="50" cy="90" rx="4" ry="2" fill="#6c757d"/>
-                    <ellipse cx="60" cy="88" rx="4" ry="2" fill="#6c757d"/>
-                </svg>
+                <img src="assets/oscar.png" alt="Oscar Statue" style="width: 100%; height: 100%; object-fit: contain;">
             </div>
             <div class="oscar-info">
                 <div class="oscar-name">Meet Oscar!</div>
@@ -4707,6 +4654,11 @@
                     setTimeout(() => {
                         createPetFeedback(getRandomPetMessage('first'));
                     }, 800);
+                } else if (!isSpamming && Math.random() < 0.4) {
+                    // Show normal random pet messages 40% of the time when not spamming
+                    setTimeout(() => {
+                        createPetFeedback(getRandomPetMessage('normal'));
+                    }, 300);
                 }
                 
                 // Check for milestones (but don't show message if spamming)
@@ -4733,10 +4685,14 @@
             function createPetFeedback(customMessage = null) {
                 const feedback = document.createElement('div');
                 feedback.textContent = customMessage || getRandomPetMessage();
+                
+                // Get the position of the Oscar container
+                const containerRect = oscarContainer.getBoundingClientRect();
+                
                 feedback.style.cssText = `
-                    position: absolute;
-                    top: -30px;
-                    left: 50%;
+                    position: fixed;
+                    top: ${containerRect.top - 40}px;
+                    left: ${containerRect.left + containerRect.width / 2}px;
                     transform: translateX(-50%);
                     background: linear-gradient(135deg, #ff6b6b, #ff8787);
                     color: white;
@@ -4753,7 +4709,7 @@
                     box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
                 `;
                 
-                oscarContainer.appendChild(feedback);
+                document.body.appendChild(feedback);
                 
                 setTimeout(() => {
                     if (feedback.parentNode) {
