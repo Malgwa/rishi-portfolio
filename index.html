@@ -4691,7 +4691,7 @@
                 
                 feedback.style.cssText = `
                     position: fixed;
-                    top: ${containerRect.top - 40}px;
+                    top: ${containerRect.bottom + 20}px;
                     left: ${containerRect.left + containerRect.width / 2}px;
                     transform: translateX(-50%);
                     background: linear-gradient(135deg, #ff6b6b, #ff8787);
@@ -4767,15 +4767,15 @@
                     }
                     20% {
                         opacity: 1;
-                        transform: translateX(-50%) translateY(-10px) scale(1);
+                        transform: translateX(-50%) translateY(-5px) scale(1);
                     }
                     80% {
                         opacity: 1;
-                        transform: translateX(-50%) translateY(-20px) scale(1);
+                        transform: translateX(-50%) translateY(-15px) scale(1);
                     }
                     100% {
                         opacity: 0;
-                        transform: translateX(-50%) translateY(-30px) scale(0.9);
+                        transform: translateX(-50%) translateY(-20px) scale(0.9);
                     }
                 }
             `;
@@ -4803,15 +4803,8 @@
                 oscarWidget.setAttribute('aria-label', `Pet Oscar the dog. Currently petted ${petCount} times.`);
             }
             
-            // Update aria-label initially and after each pet
+            // Update aria-label initially
             updateAriaLabel();
-            
-            // Update aria-label after each pet
-            const originalPetOscar = petOscar;
-            petOscar = function(e) {
-                originalPetOscar.call(this, e);
-                updateAriaLabel();
-            };
             
             // Add hover effects for better user interaction
             oscarWidget.addEventListener('mouseenter', () => {
@@ -4909,19 +4902,6 @@
                 }
             `;
             document.head.appendChild(milestoneStyle);
-            
-            // Override petOscar to include milestone check
-            const originalPetFunction = petOscar;
-            petOscar = function(e) {
-                originalPetFunction.call(this, e);
-                checkMilestone();
-            };
-            
-            // Re-bind the event listeners with the updated function
-            oscarWidget.removeEventListener('click', originalPetFunction);
-            oscarWidget.removeEventListener('touchstart', originalPetFunction);
-            oscarWidget.addEventListener('click', petOscar);
-            oscarWidget.addEventListener('touchstart', petOscar, { passive: false });
             
             // Load initial pet count from server
             loadPetCount();
