@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rishi Malgwa - Flutter Developer & Backend Engineer</title>
     <meta name="description" content="Experienced Flutter Developer and Backend Engineer specializing in scalable apps and backends. Expert in Dart, GoLang, and modern web technologies.">
-    <meta name="keywords" content="Rishi Malgwa, Flutter Developer, GoLang Developer, Backend Engineer, Mobile App Development">
+    <meta name="keywords" content="Rishi Malgwa, Flutter Developer, GoLang Developer, Backend Engineer, Mobile App Development,AI Workflow Automation,N8N,Docker,Kubernetes,Firebase,AWS,React,Node.js,Python,Java,Dart,GoLang,Flutter,Android,Backend as a Service,Container Orchestration">
     <meta name="author" content="Rishi Malgwa">
     
     <!-- Open Graph -->
@@ -2296,33 +2296,39 @@
         
         /* Tech Stack Animation Sequence - ensure only one is visible at a time */
         .react-logo {
-            animation: techCycleSequence 18s infinite;
+            animation: techCycleSequence 21s infinite;
             animation-delay: 0s;
         }
+
+       
         
         .node-logo {
-            animation: techCycleSequence 18s infinite;
+            animation: techCycleSequence 21s infinite;
             animation-delay: 3s;
         }
         
         .flutter-logo {
-            animation: techCycleSequence 18s infinite;
+            animation: techCycleSequence 21s infinite;
             animation-delay: 6s;
         }
         
         .go-logo {
-            animation: techCycleSequence 18s infinite;
+            animation: techCycleSequence 21s infinite;
             animation-delay: 9s;
         }
         
         .python-logo {
-            animation: techCycleSequence 18s infinite;
+            animation: techCycleSequence 21s infinite;
             animation-delay: 12s;
         }
         
         .java-logo {
-            animation: techCycleSequence 18s infinite;
+            animation: techCycleSequence 21s infinite;
             animation-delay: 15s;
+        }
+        .n8n-logo {
+            animation: techCycleSequence 21s infinite;
+            animation-delay: 18s;
         }
         
         @keyframes techCycleSequence {
@@ -3098,9 +3104,10 @@
                             <img src="assets/react-svg.svg" alt="React" class="tech-logo react-logo">
                             <img src="assets/nodejs-svg.svg" alt="Node.js" class="tech-logo node-logo">
                             <img src="assets/flutter-svg.svg" alt="Flutter" class="tech-logo flutter-logo">
-                            <img src="assets/Go-Logo_Blue.svg" alt="Go" class="tech-logo go-logo">
+                            <img src="assets/go-icon.svg" alt="Go" class="tech-logo go-logo">
                             <img src="assets/python-svg.svg" alt="Python" class="tech-logo python-logo">
                             <img src="assets/java-svg.svg" alt="Java" class="tech-logo java-logo">
+                            <img src="assets/n8n-svg.svg"  alt="N8N" class="tech-logo n8n-logo">
                         </div>
                     </span>
                     <br>
@@ -3114,7 +3121,7 @@
                         Flutter
                     </span>
                     <span class="role-badge liquid-interactive liquid-ripple shiny">
-                        <img src="assets/Go-Logo_Blue.svg" alt="GoLang" style="height: 20px; width: 20px;">
+                        <img src="assets/go-icon.svg" alt="GoLang" style="height: 20px; width: 20px;">
                         GoLang
                     </span>
                     <span class="role-badge liquid-interactive liquid-ripple shiny">
@@ -3243,16 +3250,7 @@
             <div class="skills-grid">
                 <div class="skill-card shiny">
                     <div class="skill-icon">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="dartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#00D2FF"/>
-                                    <stop offset="100%" style="stop-color:#3A7BD5"/>
-                                </linearGradient>
-                            </defs>
-                            <circle cx="50" cy="50" r="40" fill="url(#dartGrad)"/>
-                            <path d="M30 30 L50 20 L70 30 L60 50 L70 70 L50 80 L30 70 L40 50 Z" fill="white"/>
-                        </svg>
+                        <img src="assets/dartlang-icon.svg" width="25" height="25" alt="Dart" class="skill-icon-img">
                     </div>
                     <div class="skill-info">
                         <h4>Dart</h4>
@@ -3262,18 +3260,7 @@
                 </div>
                 <div class="skill-card shiny">
                     <div class="skill-icon">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="goGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#00ADD8"/>
-                                    <stop offset="100%" style="stop-color:#00758F"/>
-                                </linearGradient>
-                            </defs>
-                            <circle cx="50" cy="50" r="40" fill="url(#goGrad2)"/>
-                            <circle cx="35" cy="40" r="6" fill="white"/>
-                            <circle cx="65" cy="40" r="6" fill="white"/>
-                            <path d="M30 65 Q50 75 70 65" stroke="white" stroke-width="3" fill="none"/>
-                        </svg>
+                        <img src="assets/Go-Logo_Blue.svg" width="25" height="25" alt="GoLang" class="skill-icon-img">
                     </div>
                     <div class="skill-info">
                         <h4>GoLang</h4>
@@ -3283,17 +3270,7 @@
                 </div>
                 <div class="skill-card shiny">
                     <div class="skill-icon">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="javaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#f89820"/>
-                                    <stop offset="100%" style="stop-color:#ed8b00"/>
-                                </linearGradient>
-                            </defs>
-                            <circle cx="50" cy="50" r="40" fill="url(#javaGrad)"/>
-                            <path d="M30 40 Q50 30 70 40 Q60 50 50 50 Q40 50 30 40" fill="white"/>
-                            <path d="M35 60 Q50 70 65 60" stroke="white" stroke-width="3" fill="none"/>
-                        </svg>
+                        <img src="assets/java-svg.svg" width="25" height="25" alt="Java" class="skill-icon-img">
                     </div>
                     <div class="skill-info">
                         <h4>Java</h4>
@@ -3322,19 +3299,7 @@
                 </div>
                 <div class="skill-card shiny">
                     <div class="skill-icon">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="pythonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#3776ab"/>
-                                    <stop offset="50%" style="stop-color:#ffd343"/>
-                                    <stop offset="100%" style="stop-color:#3776ab"/>
-                                </linearGradient>
-                            </defs>
-                            <circle cx="50" cy="50" r="40" fill="url(#pythonGrad)"/>
-                            <circle cx="35" cy="35" r="8" fill="white"/>
-                            <circle cx="65" cy="65" r="8" fill="white"/>
-                            <path d="M20 50 Q50 30 80 50 Q50 70 20 50" fill="white" opacity="0.3"/>
-                        </svg>
+                       <img src="assets/python-svg.svg" width="25" height="25" alt="Python" class="skill-icon-img">
                     </div>
                     <div class="skill-info">
                         <h4>Python</h4>
@@ -3370,18 +3335,7 @@
             <div class="skills-grid">
                 <div class="skill-card shiny">
                     <div class="skill-icon">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="flutterGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#54C5F8"/>
-                                    <stop offset="100%" style="stop-color:#29B6F6"/>
-                                </linearGradient>
-                            </defs>
-                            <circle cx="50" cy="50" r="40" fill="url(#flutterGrad2)"/>
-                            <polygon points="35,30 50,45 35,60 20,45" fill="white"/>
-                            <polygon points="65,50 80,65 65,80 50,65" fill="white"/>
-                            <polygon points="50,45 65,60 50,75 35,60" fill="white" opacity="0.7"/>
-                        </svg>
+                        <img src="assets/flutter-svg.svg" width="25" height="25" alt="Flutter" class="skill-icon-img">
                     </div>
                     <div class="skill-info">
                         <h4>Flutter</h4>
@@ -3391,20 +3345,7 @@
                 </div>
                 <div class="skill-card shiny">
                     <div class="skill-icon">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="androidGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#3DDC84"/>
-                                    <stop offset="100%" style="stop-color:#2E7D32"/>
-                                </linearGradient>
-                            </defs>
-                            <circle cx="50" cy="50" r="40" fill="url(#androidGrad2)"/>
-                            <path d="M35 30 L65 30 Q70 30 70 35 L70 65 Q70 70 65 70 L35 70 Q30 70 30 65 L30 35 Q30 30 35 30 Z" fill="white"/>
-                            <circle cx="42" cy="45" r="2" fill="url(#androidGrad2)"/>
-                            <circle cx="58" cy="45" r="2" fill="url(#androidGrad2)"/>
-                            <line x1="25" y1="25" x2="30" y2="35" stroke="white" stroke-width="2"/>
-                            <line x1="75" y1="25" x2="70" y2="35" stroke="white" stroke-width="2"/>
-                        </svg>
+                        <img src="assets/android-icon.svg" width="25" height="25" alt="Android" class="skill-icon-img">
                     </div>
                     <div class="skill-info">
                         <h4>Android</h4>
@@ -3414,39 +3355,17 @@
                 </div>
                 <div class="skill-card shiny">
                     <div class="skill-icon">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="expressGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#68cc39"/>
-                                    <stop offset="100%" style="stop-color:#4f9a2a"/>
-                                </linearGradient>
-                            </defs>
-                            <circle cx="50" cy="50" r="40" fill="url(#expressGrad)"/>
-                            <path d="M25 40 L75 40 M25 50 L75 50 M25 60 L75 60" stroke="white" stroke-width="3"/>
-                            <circle cx="65" cy="50" r="8" fill="white"/>
-                        </svg>
+                        <img src="assets/nodejs-svg.svg" width="25" height="25" alt="Nodejs" class="skill-icon-img">
                     </div>
                     <div class="skill-info">
-                        <h4>Express.js</h4>
-                        <p>Node.js Backend</p>
+                        <h4>Node.js</h4>
+                        <p>Backend Development</p>
                     </div>
                     
                 </div>
                 <div class="skill-card shiny">
                     <div class="skill-icon">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="reactGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#61dafb"/>
-                                    <stop offset="100%" style="stop-color:#21a0c4"/>
-                                </linearGradient>
-                            </defs>
-                            <circle cx="50" cy="50" r="40" fill="url(#reactGrad)"/>
-                            <circle cx="50" cy="50" r="6" fill="white"/>
-                            <ellipse cx="50" cy="50" rx="25" ry="10" stroke="white" stroke-width="2" fill="none"/>
-                            <ellipse cx="50" cy="50" rx="25" ry="10" stroke="white" stroke-width="2" fill="none" transform="rotate(60 50 50)"/>
-                            <ellipse cx="50" cy="50" rx="25" ry="10" stroke="white" stroke-width="2" fill="none" transform="rotate(-60 50 50)"/>
-                        </svg>
+                        <img src="assets/react-svg.svg" width="25" height="25" alt="React" class="skill-icon-img">
                     </div>
                     <div class="skill-info">
                         <h4>React</h4>
@@ -3456,17 +3375,7 @@
                 </div>
                 <div class="skill-card shiny">
                     <div class="skill-icon">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="awsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#ff9900"/>
-                                    <stop offset="100%" style="stop-color:#ff6600"/>
-                                </linearGradient>
-                            </defs>
-                            <circle cx="50" cy="50" r="40" fill="url(#awsGrad)"/>
-                            <path d="M30 40 Q40 30 50 40 Q60 30 70 40 L70 60 Q50 70 30 60 Z" fill="white"/>
-                            <path d="M20 65 Q50 75 80 65" stroke="white" stroke-width="3" fill="none"/>
-                        </svg>
+                        <img src="assets/amazon_aws-icon.svg" width="20" height="20" alt="AWS" class="skill-icon-img">
                     </div>
                     <div class="skill-info">
                         <h4>AWS</h4>
@@ -3476,25 +3385,41 @@
                 </div>
                 <div class="skill-card shiny">
                     <div class="skill-icon">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="dockerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#0db7ed"/>
-                                    <stop offset="100%" style="stop-color:#0099cc"/>
-                                </linearGradient>
-                            </defs>
-                            <circle cx="50" cy="50" r="40" fill="url(#dockerGrad)"/>
-                            <rect x="20" y="40" width="60" height="20" rx="3" fill="white"/>
-                            <rect x="25" y="35" width="8" height="8" rx="2" fill="white"/>
-                            <rect x="36" y="35" width="8" height="8" rx="2" fill="white"/>
-                            <rect x="47" y="35" width="8" height="8" rx="2" fill="white"/>
-                            <rect x="58" y="35" width="8" height="8" rx="2" fill="white"/>
-                            <rect x="69" y="35" width="8" height="8" rx="2" fill="white"/>
-                        </svg>
+                       <img src="assets/docker-svg.svg" width="25" height="25" alt="Docker" class="skill-icon-img">
                     </div>
                     <div class="skill-info">
                         <h4>Docker</h4>
                         <p>Containerization</p>
+                    </div>
+                    
+                </div>
+                <div class="skill-card shiny">
+                    <div class="skill-icon">
+                       <img src="assets/firebase-icon.svg" width="25" height="25" alt="Firebase" class="skill-icon-img">
+                    </div>
+                    <div class="skill-info">
+                        <h4>Firebase</h4>
+                        <p>Backend as a Service</p>
+                    </div>
+                    
+                </div>
+                <div class="skill-card shiny">
+                    <div class="skill-icon">
+                      <img src="assets/kubernetes-icon.svg" width="25" height="25" alt="Kubernetes" class="skill-icon-img">
+                    </div>
+                    <div class="skill-info">
+                        <h4>Kubernetes</h4>
+                        <p>Container Orchestration</p>
+                    </div>
+                    
+                </div>
+                <div class="skill-card shiny">
+                    <div class="skill-icon">
+                        <img src="assets/n8n-svg.svg" width="25" height="25" alt="N8N" class="skill-icon-img">
+                    </div>
+                    <div class="skill-info">
+                        <h4>N8N</h4>
+                        <p>AI Workflow Automation</p>
                     </div>
                     
                 </div>
